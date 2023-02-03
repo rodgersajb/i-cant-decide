@@ -1,14 +1,14 @@
-import styles from "@/styles/Login.module.css";
 import { AuthContext } from "Context/AuthContext";
+import { useState, useContext } from "react";
+import styles from "@/styles/Login.module.css";
 import {
   getAuth,
   signInWithEmailAndPassword,
   onAuthStateChanged,
-} from "firebase/auth";
+} from "@firebase/auth";
 import { firebase } from "./firebase";
-import { useState, useEffect, useContext } from "react";
 
-const EmailInput = () => {
+const EmailSignIn = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -44,39 +44,35 @@ const EmailInput = () => {
     event.preventDefault();
   };
 
-  // const handleUserSignUp = () => {
-  //   <Navigate to="/Signup" />;
-  // };
-
   useEffect(() => {
     if (!loggedIn) {
       authenticateUser();
     }
   }, [loggedIn]);
-
   return (
     <>
       <div className={styles.input}>
-        <label htmlFor="">
-          <input type="text" placeholder="Name" />
-        </label>
-        <label htmlFor="">
-          <input
-            type="email"
-            placeholder="Email"
-            onChange={(event) => setEmail(event.target.value)}
-          />
-        </label>
-        <label htmlFor="">
-          <input
-            type="password"
-            placeholder="Password"
-            onChange={(event) => setPassword(event.target.value)}
-          />
-        </label>
+        <form action="" onSubmit={handleOnSubmit}>
+          <label htmlFor="">
+            <input
+              type="email"
+              placeholder="Email"
+              onChange={(event) => setEmail(event.target.value)}
+            />
+          </label>
+          <label htmlFor="">
+            <input
+              type="password"
+              placeholder="Password"
+              onChange={(event) => setPassword(event.target.value)}
+            />
+          </label>
+
+          <button onClick={handleSignIn}>Sign In</button>
+        </form>
       </div>
     </>
   );
 };
 
-export default EmailInput;
+export default EmailSignIn;

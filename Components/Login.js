@@ -1,6 +1,7 @@
 import styles from "@/styles/Login.module.css";
-import EmailInput from "./EmailInput";
+import EmailSignUp from "./EmailSignUp";
 import Google from "./Google";
+import EmailSignIn from "./EmailSignIn";
 
 const Login = () => {
   return (
@@ -16,11 +17,9 @@ const Login = () => {
               <p>Facebook</p>
               <p>Something</p>
             </div>
-            <span>Or use your Email</span>
-            <EmailInput />
-
-            <button>Sign Up!</button>
           </form>
+          <span>Or use your Email</span>
+          <EmailSignUp />
         </div>
         <div className="form-container sign-up-container">
           <form action="">
@@ -33,17 +32,8 @@ const Login = () => {
               <p>Something</p>
             </div>
             <span>Or use your Email</span>
-            <div className={styles.input}>
-              <label htmlFor="">
-                <input type="text" placeholder="Name" />
-              </label>
-              <label htmlFor="">
-                <input type="email" placeholder="Email" />
-              </label>
-              <label htmlFor="">
-                <input type="password" placeholder="Password" />
-              </label>
-            </div>
+            <EmailSignIn />
+        
             <button>Sign In!</button>
           </form>
         </div>
